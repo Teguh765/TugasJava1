@@ -1,0 +1,344 @@
+// program utama 
+
+package latihaan_1;
+import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+public class Utama{
+    public static void main(String [] args) {
+        // scanner
+        Scanner input = new Scanner(System.in);
+        //polimorfin
+        hitung inputann = new hitung();
+        hitung binner1 = new biner_to_decimal();
+        hitung decimal = new desimal_to_biner();
+        hitung fibo11 = new fiboo();
+        hitung un= new suku_n();
+        hitung sn = new jumlah_suku_ke_n();
+        hitung unsn= new jumlahs_ke_n();
+        //enheritance
+        kalkulator hitung_r= new kalkulator();
+        jumlah     hitung_j= new jumlah();
+        kurang     hitung_k=new kurang();
+        bagi       hitung_b= new bagi();
+        kali       hitung_l= new kali();
+        //kapsulasi
+        DataUser data1= new DataUser();
+        //java time
+        LocalDateTime obj=  LocalDateTime.now();
+        DateTimeFormatter obs= DateTimeFormatter.ofPattern("YYYY-dd-MM-HH-mm-SS-NS");
+        String newobj= obj.format(obs);
+        //deklarasi
+        String nama;
+        int bil,bil2,bil3,bil4,bil5;
+        int pilihan,pilihan_menu,pass1;
+        float hasil;
+        //program
+        System.out.println("|------------selamat datang di aplikasi kalkulator hitung cepat----------------|\n");
+        System.out.print("silahkan masukan nama Lengkap anda : ");
+        nama=input.nextLine();
+        data1.setName(nama);
+        System.out.print("silahkan password  anda dalam bentuk angka 6 digit) : ");
+        pass1=input.nextInt();
+        data1.setPass(pass1);
+        do{
+            System.out.println("---------------------------------------------------------------------------------------------\n");
+            System.out.println("|--------------------------Program aplikasi kalkulator hitung cepat--------------------------|");
+            System.out.println("| 1.Konverter bilangan biner ke decimal                                                      |");
+            System.out.println("| 2.Konverter bilangan decimal ke biner                                                      |");
+            System.out.println("| 3.Mencari deret bilangan fibonaci ke -n bilangan                                           |");
+            System.out.println("| 4.Mencari nilai suku ke -n (un) pada bilangan                                              |");
+            System.out.println("| 5.Mencari jumlah suku ke -n (sn) pada suatu bilangan                                       |");
+            System.out.println("| 6.Mencari jumlah suku ke -n (sn) dan nilai suku ke n (un) jika diketahui nilai suku lainya |");
+            System.out.println("| 7.Operasi Penjumlahan                                                                      |");
+            System.out.println("| 8.Operasi pengurangan                                                                      |");
+            System.out.println("| 9.Operasi Pembagian                                                                        |");
+            System.out.println("|10.Operasi Perkalian                                                                        |");
+            System.out.println("----------------------------Silakan untuk memasukan no pilihan-------------------------------|");
+            System.out.print(" : ");
+            pilihan = input.nextInt();
+            if (pilihan == 1){
+                System.out.println("|----------Konverter bilangan biner ke decimal------------|");
+                binner1.hitungg2();
+                bil = input.nextInt();
+                binner1.hitung11(bil);
+            } else if (pilihan == 2){
+                System.out.println("|----------Konverter bilangan decimal ke biner------------|");
+                binner1.hitung1();
+                bil = input.nextInt();
+                decimal.hitung11(bil);
+            } else if (pilihan == 3){
+                System.out.println("|------------menghitung bilangan fibonaci ke-n------------|");
+                binner1.hitungg3();
+                bil = input.nextInt();
+                fibo11.hitung11(bil);
+            }else if (pilihan == 4) {
+                System.out.println("|------------Mencari nilai suku ke n (un) pada suatu bilangan------------|");
+                System.out.print("silahkan masukan suku ke -n yang ingin dicari nilainya :");
+                bil = input.nextInt();
+                System.out.print("silahkan masukan nilai awal (a) :");
+                bil2 =input.nextInt();
+                System.out.print("silahkan masukan nilai beda (b) :");
+                bil3 =input.nextInt();
+                un.hitung12(bil,bil2,bil3);
+            }else if (pilihan == 5) {
+                System.out.println("|------------Mencari jumlah suku ke n (sn) pada suatu bilangan------------|");
+                System.out.print("silahkan masukan suku ke -n yang ingin dicari nilainya :");
+                bil = input.nextInt();
+                System.out.print("silahkan masukan nilai awal (a) :");
+                bil2 = input.nextInt();
+                System.out.print("silahkan masukan nilai beda (b) :");
+                bil3 = input.nextInt();
+                sn.hitung12(bil, bil2, bil3);
+            }else if (pilihan == 6) {
+                System.out.println("|------------Mencari nilai suku ke n (un) dan (sn) pada suatu bilangan jika nilai suku lainya diketahui------------|");
+                System.out.print("silahkan masukan suku ke -n yang ingin dicari nilainya : ");
+                bil = input.nextInt();
+                System.out.print("silahkan masukan suku pertama yang diketahui: ");
+                bil2 = input.nextInt();
+                System.out.print("silahkan masukan nilai suku ke " + bil2 + " : ");
+                bil3 = input.nextInt();
+                System.out.print("silahkan masukan suku kedua yang diketahui: ");
+                bil4 = input.nextInt();
+                System.out.print("silahkan masukan nilai suku ke " + bil4 + " : ");
+                bil5 = input.nextInt();
+                unsn.hitung13(bil, bil2, bil3,bil4,bil5);
+            }else if (pilihan == 7){
+                System.out.println("------------------------penjumlahan--------------------------");
+                hitung_j.inputan1();
+                bil = input.nextInt();
+                hitung_j.inputan2();
+                bil2 = input.nextInt();
+                hasil=hitung_j.hasil(bil,bil2);
+                System.out.println("----------------------------------------------\n");
+                System.out.println("hasil perhitungan adalah ------> "+hasil+" cm");
+            }else if (pilihan == 8){
+                System.out.println("|------------------pengurangan---------------------------|");
+                hitung_k.inputan1();
+                bil = input.nextInt();
+                hitung_k.inputan2();
+                bil2 = input.nextInt();
+                hasil=hitung_k.hasil(bil,bil2);
+                System.out.println("----------------------------------------------\n");
+                System.out.println("hasil perhitungan adalah ------> "+hasil+" cm");
+            }else if (pilihan == 9){
+                System.out.println("|----------------------pembagian-------------------------|");
+                hitung_b.inputan1();
+                bil = input.nextInt();
+                hitung_b.inputan2();
+                bil2 = input.nextInt();
+                hasil=hitung_b.hasil(bil,bil2);
+                System.out.println("----------------------------------------------\n");
+                System.out.println("hasil perhitungan adalah ------> "+hasil+" cm");
+            }else if (pilihan == 10){
+                System.out.println("|------------------perkalian-----------------------------|");
+                hitung_l.inputan1();
+                bil = input.nextInt();
+                hitung_l.inputan2();
+                bil2 = input.nextInt();
+                hasil=hitung_l.hasil(bil,bil2);
+                System.out.println("----------------------------------------------\n");
+                System.out.println("hasil perhitungan adalah ------> "+hasil+" cm");
+            }else{
+                System.out.println("error");
+            }
+            System.out.println("--------------------------------------------------\n");
+            System.out.println("masukan pilihan 1 jika ingin kembali ke program utama\nmasukan pilihan 2 jika ingin keluar\n");
+            pilihan_menu=input.nextInt();
+        }while(pilihan_menu !=2);
+        System.out.println("terimakasi telah berkunjung   "+data1.getname());
+        System.out.println("password yang anda gunakan   "+data1.getPass());
+        System.out.println(" "+newobj);
+    }
+}
+
+
+// kelas Hitung.java dengan konsep Polimorfin 
+
+
+package latihaan_1;
+import java.math.*;
+public class hitung {
+    public void hitung1(){
+        System.out.print("silahkan untuk memasukan angka decimal: ");
+    }
+    public void hitungg2(){
+        System.out.print("silahkan untuk memasukan angka biner : ");
+    }
+    public void hitungg3(){ System.out.print("silahkan untuk memasukan bilangan fibonnaci : ");}
+    public void awal_1(){System.out .print ("silahkan masukan  awal (a) : ");}
+    public void beda_1(){System.out .print ("silahkan masukan  beda (b) : ");}
+    public int hitung11(int bil){
+        System.out.println("inputan salah");
+        return bil; }
+    public int hitung12 (int bil,int bil2, int bil3){
+        System.out.println("inputan salah");
+        return 0; }
+    public int hitung13 (int bil,int bil2, int bil3,int bil4,int bil5){
+        System.out.println("inputan salah");
+        return 0; }
+}
+class biner_to_decimal extends hitung{
+    public int hitung11(int biner1){
+        int  desimal,awal;
+        awal=1;
+        desimal=0; //input 100
+        do {
+            desimal = desimal + (biner1 % 2) * awal;    //0+0*1=0  ,hitung ke 2 =0 +0*2=0,hitung ke 3 =0+1*4=4
+            awal = awal * 2;                           //set awal =2, hitung ke 2= 2*2=4  , hitung 3= 4*2=8
+            biner1 = biner1 / 10;                     //set biner =10  , set biner jadi 1;
+        }while(biner1 != 0);
+        System.out.println("-----------------------------------------------");
+        System.out.println("\t\tBilangan Desimalnya adalah "+ desimal);  //output =100
+        return desimal;
+    }
+
+}
+    class desimal_to_biner extends hitung {
+        public int hitung11(int bil) {
+            int hasil=0,awal=0;
+            while(bil>0){                                        //contoh masukan 4
+                hasil= hasil+ bil%2*(int)Math.pow(10,awal);     //0+0*10pangkat 0=0 hitung 2=0+0*10=0 hitung 3=0+1*100=100  100+
+                bil=bil/2;                                     //4/2=2 hitung 2=2/2=1
+                awal++;                                       //awal=1  awal=2
+            }
+            System.out.println("-----------------------------------------------");
+            System.out.println("\t\tBilangan biner Adalah -----> "+hasil);
+            return hasil;
+        }
+    }
+class fiboo extends hitung {
+    public int hitung11(int bil) {
+        int fibo1, a1,a2,awal;
+        fibo1=0;
+        a1=0;
+        a2=1;
+        if(bil==0 ||bil ==1){
+            return bil;
+        }
+        if(bil>=2) {
+            for (awal = 2; awal < bil; awal++) {
+                fibo1 = a1 + a2;
+                System.out.println("\t"+fibo1);
+                a1 = a2;
+                a2 = fibo1;
+            }
+        }
+        System.out.println("-----------------------------------------------");
+        System.out.println("\t\tBilangan fibonaci ke "+bil+" "+"Adalah  "+fibo1+" ");
+        return fibo1;
+    }
+}
+class suku_n extends hitung {
+    public int hitung12(int n,int a, int b) {
+        int un=a+(n-1)*b;
+        System.out.println("-----------------------------------------------");
+        System.out.println("suku ke "+n+" "+"adalah "+un+" ");
+        return un;
+    }
+}
+class jumlah_suku_ke_n extends hitung {
+    public int hitung12(int n,int a, int b) {
+        int sn=n*(2*a+ (n-1)*b)/2;
+        System.out.println("-----------------------------------------------");
+        System.out.println("jumlah suku  ke "+n+" "+"adalah "+sn+" ");
+        return sn;
+    }
+}
+class jumlahs_ke_n extends hitung {
+    public int hitung13(int snun,int n1, int nilai_n1,int n2,int nilai_n2){
+        int a,b,cari_b1,cari_b2,sn,un;
+        cari_b1=(n1-1)-(n2-1);
+        cari_b2=nilai_n1-nilai_n2;
+        b=cari_b2/cari_b1;
+        a= nilai_n1- ((n1-1)*b);
+        un= a+(snun-1)*b;
+        sn=snun*(2*a+(snun-1)*b)/2;
+        System.out.println("-----------------------------------------------");
+        System.out.println("Suku ke "+snun+" "+" adalah "+un);
+        System.out.println("jumlah suku ke  "+snun+" "+" adalah "+sn);
+        return un;
+    }
+}
+
+
+
+// kelas kalkulator dengan konsep enheritance / pewarisan
+
+package latihaan_1;
+public class kalkulator {
+    public void inputan1() {
+        System.out.print("masukan angka pertama : ");
+    }
+    public void inputan2() {
+        System.out.print("masukan angka kedua : ");
+    }
+    public float hasil(float a , float b){
+        return 0;
+    }
+}
+class jumlah extends kalkulator{
+    public float hasil (float a1, float a2){
+        float hasil;
+        hasil= a1+ a2;
+        System.out.println("--------------------------------------------");
+        System.out.println(a1+" cm "+"+ "+a2+" cm");
+        return hasil;
+    }
+}
+class kurang extends kalkulator{
+    public float hasil (float a1, float a2){
+        float hasil;
+        hasil= a1 - a2;
+        System.out.println("--------------------------------------------");
+        System.out.println(a1+" cm"+"- "+a2+" cm");
+        return hasil;
+    }
+}
+class bagi extends kalkulator{
+    public float hasil (float a1, float a2){
+        float hasil;
+        hasil= a1 / a2;
+        System.out.println("-------------------------------------------");
+        System.out.println(a1+" cm "+"/ "+a2+" cm");
+        return hasil;
+    }
+}
+class kali extends kalkulator{
+    public float hasil (float a1, float a2){
+        float hasil;
+        hasil= a1 * a2;
+        System.out.println("--------------------------------------------");
+        System.out.println(a1+" cm "+" * "+a2+" cm");
+        return hasil;
+    }
+}
+
+
+
+// kelas DataUser dengan konsep kapsulasi
+
+package latihaan_1;
+
+public class DataUser {
+    private String nama;
+    private int pass1;
+    // get
+    public String getname() {
+        return nama;
+    }
+    public int getPass() {
+        return pass1;
+    }
+    //set
+    public void setName(String input) {
+        this.nama = input;
+    }
+    public void setPass(int input2) {
+        this.pass1 = input2;
+    }
+}
+
+
+
+
